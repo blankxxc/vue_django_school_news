@@ -1,0 +1,700 @@
+{% extends "base.html" %} {% load static %}
+{% block title %} 新闻网站| 首页 {% endblock title %}
+{% block content %}
+
+
+<!-- 轮播图 -->
+<section class="featured-posts-grid bg-dark">
+    <div class="container clearfix" >
+
+        <!-- Large post slider -->
+        <div class="featured-posts-grid__item featured-posts-grid__item--lg" >
+
+            <div id="owl-hero-grid" class="owl-carousel owl-theme owl-carousel--dots-inside" >
+
+                {% for new in news %}
+                <article class="entry featured-posts-grid__entry" >
+                    <div class="thumb-bg-holder owl-lazy" data-src="/media/{{ new.img }}" >
+                        <img src="/media/{{ new.img }}" alt="" class="d-none" >
+                        <a href="{% url 'news:news_detail' new.id %}" class="thumb-url"></a>
+                        <div class="bottom-gradient"></div>
+                    </div>
+
+                    <div class="thumb-text-holder" >
+                        <a href="single-post.html"
+                           class="entry__meta-category entry__meta-category-color entry__meta-category-color--salad">
+                            {{ new.category }}</a>
+                        <h2 class="thumb-entry-title">
+                            <a href="{% url 'news:news_detail' new.id %}">{{ new.title }}</a>
+                        </h2>
+                        <ul class="entry__meta">
+                            <li class="entry__meta-author">
+                                <i class="ui-author"></i>
+                                <a >{{ new.user }}</a>
+                            </li>
+                            <li class="entry__meta-date">
+                                <i class="ui-date"></i>
+                                {{ new.modified_time }}
+                            </li>
+                            <li class="entry__meta-comments">
+                                <i class="ui-comments"></i>
+                                <a >{{ new.views }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+                {% endfor %}
+
+
+            </div> <!-- end owl slider -->
+        </div>
+        <!-- end large post slider -->
+        <div class="featured-posts-grid__item featured-posts-grid__item--sm">
+            <article class="entry featured-posts-grid__entry">
+                <div class="thumb-bg-holder" style="background-image: url(/media/{{tui1.img}});">
+                    <a href="{% url 'news:news_detail' tui1.id %}" class="thumb-url"></a>
+                    <div class="bottom-gradient"></div>
+                </div>
+
+                <div class="thumb-text-holder">
+                    <h2 class="thumb-entry-title thumb-entry-title--sm">
+                        <a href="{% url 'news:news_detail' tui1.id %}">{{tui1.title}}</a>
+                    </h2>
+                    <ul class="entry__meta">
+                        <li class="entry__meta-author">
+                            <i class="ui-author"></i>
+                            <a >{{tui1.user}}</a>
+                        </li>
+                        <li class="entry__meta-date">
+                            <i class="ui-date"></i>
+                            {{tui1.modified_time}}
+                        </li>
+                        <li class="entry__meta-comments">
+                            <i class="ui-comments"></i>
+                            <a href="#">{{tui1.views}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+
+        <div class="featured-posts-grid__item featured-posts-grid__item--sm">
+            <article class="entry featured-posts-grid__entry">
+                <div class="thumb-bg-holder" style="background-image: url(/media/{{tui2.img}});">
+                    <a href="{% url 'news:news_detail' tui2.id %}" class="thumb-url"></a>
+                    <div class="bottom-gradient"></div>
+                </div>
+
+                <div class="thumb-text-holder">
+                    <h2 class="thumb-entry-title thumb-entry-title--sm">
+                        <a href="{% url 'news:news_detail' tui2.id %}">{{tui2.title}}</a>
+                    </h2>
+                    <ul class="entry__meta">
+                        <li class="entry__meta-author">
+                            <i class="ui-author"></i>
+                            <a >{{tui2.user}}</a>
+                        </li>
+                        <li class="entry__meta-date">
+                            <i class="ui-date"></i>
+                            {{tui2.modified_time}}
+                        </li>
+                        <li class="entry__meta-comments">
+                            <i class="ui-comments"></i>
+                            <a >{{tui2.views}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- 居中布局 -->
+<div class="main-container container mt-40" id="main-container">
+
+    <!-- 内容 -->
+    <div class="row">
+
+        <!-- Posts -->
+        <div class="col-lg-8 blog__content mb-30">
+
+            <!-- 栏目 -->
+            <section class="section mb-0">
+                <div class="row">
+
+                    <!-- 学校热点 -->
+                    <div class="col-md-6 mb-40">
+                        <div class="title-wrap bottom-line bottom-line--orange">
+                            <h3 class="section-title section-title--sm">学校热点</h3>
+                        </div>
+                        <article class="entry">
+                            <div class="entry__img-holder">
+                                <a href="{% url 'news:news_detail' xuexiao_qian.id %}">
+                                    <div class="thumb-container thumb-75">
+                                        <img data-src="/media/{{xuexiao_qian.img}}"
+                                             src="static/img/empty.png" class="entry__img lazyload" alt=""/>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="entry__body">
+                                <div class="entry__header">
+                                    <h2 class="entry__title">
+                                        <a href="{% url 'news:news_detail' xuexiao_qian.id %}">{{xuexiao_qian.title}}</a>
+                                    </h2>
+                                    <ul class="entry__meta">
+                                        <li class="entry__meta-author">
+                                            <i class="ui-author"></i>
+                                            <a >{{xuexiao_qian.user}}</a>
+                                        </li>
+                                        <li class="entry__meta-date">
+                                            <i class="ui-date"></i>
+                                            {{xuexiao_qian.modified_time}}
+                                        </li>
+                                        <li class="entry__meta-comments">
+                                            <i class="ui-comments"></i>
+                                            {{xuexiao_qian.views}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="entry__excerpt">
+                                    <p>{{xuexiao_qian.excerpt}}</p>
+                                </div>
+                            </div>
+                        </article>
+                        <!--列表-->
+                        <ul class="post-list-small post-list-small--border-top">
+                            {% for new in xuexiao_hou %}
+                            <li class="post-list-small__item">
+                                <article class="post-list-small__entry">
+                                    <div class="post-list-small__body">
+                                        <h3 class="post-list-small__entry-title">
+                                            <a href="{% url 'news:news_detail' new.id %}">{{new.title}}</a>
+                                        </h3>
+                                        <ul class="entry__meta">
+                                            <li class="entry__meta-date">
+                                                <i class="ui-date"></i>
+                                                {{new.modified_time}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!-- end world -->
+
+                    <!-- 党务工作 -->
+                    <div class="col-md-6 mb-40">
+                        <div class="title-wrap bottom-line bottom-line--red">
+                            <h3 class="section-title section-title--sm">党务工作</h3>
+                        </div>
+                        <article class="entry">
+                            <div class="entry__img-holder">
+                                <a href="{% url 'news:news_detail' dangwu_qian.id %}">
+                                    <div class="thumb-container thumb-75">
+                                        <img data-src="/media/{{dangwu_qian.img}}"
+                                             src="static/img/empty.png" class="entry__img lazyload" alt=""/>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="entry__body">
+                                <div class="entry__header">
+                                    <h2 class="entry__title">
+                                        <a href="{% url 'news:news_detail' dangwu_qian.id %}">{{dangwu_qian.title}}</a>
+                                    </h2>
+                                    <ul class="entry__meta">
+                                        <li class="entry__meta-author">
+                                            <i class="ui-author"></i>
+                                            <a >{{dangwu_qian.user}}</a>
+                                        </li>
+                                        <li class="entry__meta-date">
+                                            <i class="ui-date"></i>
+                                            {{dangwu_qian.modified_time}}
+                                        </li>
+                                        <li class="entry__meta-comments">
+                                            <i class="ui-comments"></i>
+                                            {{dangwu_qian.views}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="entry__excerpt">
+                                    <p>{{dangwu_qian.excerpt}}</p>
+                                </div>
+                            </div>
+                        </article>
+                        <!--列表-->
+                        <ul class="post-list-small post-list-small--border-top">
+                            {% for new in dangwu_hou %}
+                            <li class="post-list-small__item">
+                                <article class="post-list-small__entry">
+                                    <div class="post-list-small__body">
+                                        <h3 class="post-list-small__entry-title">
+                                            <a href="{% url 'news:news_detail' new.id %}">{{new.title}}</a>
+                                        </h3>
+                                        <ul class="entry__meta">
+                                            <li class="entry__meta-date">
+                                                <i class="ui-date"></i>
+                                                {{new.modified_time}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!-- end -->
+
+                    <!-- 学术 -->
+                    <div class="col-md-6 mb-40">
+                        <div class="title-wrap bottom-line bottom-line--light-blue">
+                            <h3 class="section-title section-title--sm">学术交流</h3>
+                        </div>
+                        <article class="entry">
+                            <div class="entry__img-holder">
+                                <a href="{% url 'news:news_detail' xueshu_qian.id %}">
+                                    <div class="thumb-container thumb-75">
+                                        <img data-src="/media/{{xueshu_qian.img}}"
+                                             src="static/img/empty.png" class="entry__img lazyload" alt=""/>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="entry__body">
+                                <div class="entry__header">
+                                    <h2 class="entry__title">
+                                        <a href="{% url 'news:news_detail' xueshu_qian.id %}">{{xueshu_qian.title}}</a>
+                                    </h2>
+                                    <ul class="entry__meta">
+                                        <li class="entry__meta-author">
+                                            <i class="ui-author"></i>
+                                            <a >{{xueshu_qian.user}}</a>
+                                        </li>
+                                        <li class="entry__meta-date">
+                                            <i class="ui-date"></i>
+                                            {{xueshu_qian.modified_time}}
+                                        </li>
+                                        <li class="entry__meta-comments">
+                                            <i class="ui-comments"></i>
+                                            {{xueshu_qian.views}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="entry__excerpt">
+                                    <p>{{xueshu_qian.excerpt}}</p>
+                                </div>
+                            </div>
+                        </article>
+                        <!--列表-->
+                        <ul class="post-list-small post-list-small--border-top">
+                            {% for new in xueshu_hou %}
+                            <li class="post-list-small__item">
+                                <article class="post-list-small__entry">
+                                    <div class="post-list-small__body">
+                                        <h3 class="post-list-small__entry-title">
+                                            <a href="{% url 'news:news_detail' new.id %}">{{new.title}}</a>
+                                        </h3>
+                                        <ul class="entry__meta">
+                                            <li class="entry__meta-date">
+                                                <i class="ui-date"></i>
+                                                {{new.modified_time}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!-- end sport -->
+
+                    <!-- 各类赛事 -->
+                    <div class="col-md-6 mb-40">
+                        <div class="title-wrap bottom-line bottom-line--blue">
+                            <h3 class="section-title section-title--sm">各类赛事</h3>
+                        </div>
+                        <article class="entry">
+                            <div class="entry__img-holder">
+                                <a href="{% url 'news:news_detail' bisai_qian.id %}">
+                                    <div class="thumb-container thumb-75">
+                                        <img data-src="/media/{{bisai_qian.img}}"
+                                             src="static/img/empty.png" class="entry__img lazyload" alt=""/>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="entry__body">
+                                <div class="entry__header">
+                                    <h2 class="entry__title">
+                                        <a href="{% url 'news:news_detail' bisai_qian.id %}">{{bisai_qian.title}}</a>
+                                    </h2>
+                                    <ul class="entry__meta">
+                                        <li class="entry__meta-author">
+                                            <i class="ui-author"></i>
+                                            <a >{{bisai_qian.user}}</a>
+                                        </li>
+                                        <li class="entry__meta-date">
+                                            <i class="ui-date"></i>
+                                            {{bisai_qian.modified_time}}
+                                        </li>
+                                        <li class="entry__meta-comments">
+                                            <i class="ui-comments"></i>
+                                            {{bisai_qian.views}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="entry__excerpt">
+                                    <p>{{bisai_qian.excerpt}}</p>
+                                </div>
+                            </div>
+                        </article>
+                        <!--列表-->
+                        <ul class="post-list-small post-list-small--border-top">
+                            {% for new in bisai_hou %}
+                            <li class="post-list-small__item">
+                                <article class="post-list-small__entry">
+                                    <div class="post-list-small__body">
+                                        <h3 class="post-list-small__entry-title">
+                                            <a href="{% url 'news:news_detail' new.id %}">{{new.title}}</a>
+                                        </h3>
+                                        <ul class="entry__meta">
+                                            <li class="entry__meta-date">
+                                                <i class="ui-date"></i>
+                                                {{new.modified_time}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!-- end  -->
+
+
+                    <!--素质教育-->
+                    <div class="col-md-6 mb-40">
+                        <div class="title-wrap bottom-line bottom-line--Purple">
+                            <h3 class="section-title section-title--sm">素质教育</h3>
+                        </div>
+                        <article class="entry">
+                            <div class="entry__img-holder">
+                                <a href="{% url 'news:news_detail' suzhi_qian.id %}">
+                                    <div class="thumb-container thumb-75">
+                                        <img data-src="/media/{{suzhi_qian.img}}"
+                                             src="static/img/empty.png" class="entry__img lazyload" alt=""/>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="entry__body">
+                                <div class="entry__header">
+                                    <h2 class="entry__title">
+                                        <a href="{% url 'news:news_detail' suzhi_qian.id %}">{{suzhi_qian.title}}</a>
+                                    </h2>
+                                    <ul class="entry__meta">
+                                        <li class="entry__meta-author">
+                                            <i class="ui-author"></i>
+                                            <a >{{suzhi_qian.user}}</a>
+                                        </li>
+                                        <li class="entry__meta-date">
+                                            <i class="ui-date"></i>
+                                            {{suzhi_qian.modified_time}}
+                                        </li>
+                                        <li class="entry__meta-comments">
+                                            <i class="ui-comments"></i>
+                                            {{suzhi_qian.views}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="entry__excerpt">
+                                    <p>{{suzhi_qian.excerpt}}</p>
+                                </div>
+                            </div>
+                        </article>
+                        <!--列表-->
+                        <ul class="post-list-small post-list-small--border-top">
+                            {% for new in suzhi_hou %}
+                            <li class="post-list-small__item">
+                                <article class="post-list-small__entry">
+                                    <div class="post-list-small__body">
+                                        <h3 class="post-list-small__entry-title">
+                                            <a href="{% url 'news:news_detail' new.id %}">{{new.title}}</a>
+                                        </h3>
+                                        <ul class="entry__meta">
+                                            <li class="entry__meta-date">
+                                                <i class="ui-date"></i>
+                                                {{new.modified_time}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!--end-->
+
+
+
+                    <!--其他-->
+                    <div class="col-md-6 mb-40">
+                        <div class="title-wrap bottom-line bottom-line--yellow">
+                            <h3 class="section-title section-title--sm">其他</h3>
+                        </div>
+                        <article class="entry">
+                            <div class="entry__img-holder">
+                                <a href="{% url 'news:news_detail' qita_qian.id %}">
+                                    <div class="thumb-container thumb-75">
+                                        <img data-src="/media/{{qita_qian.img}}"
+                                             src="static/img/empty.png" class="entry__img lazyload" alt=""/>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="entry__body">
+                                <div class="entry__header">
+                                    <h2 class="entry__title">
+                                        <a href="{% url 'news:news_detail' qita_qian.id %}">{{qita_qian.title}}</a>
+                                    </h2>
+                                    <ul class="entry__meta">
+                                        <li class="entry__meta-author">
+                                            <i class="ui-author"></i>
+                                            <a >{{qita_qian.user}}</a>
+                                        </li>
+                                        <li class="entry__meta-date">
+                                            <i class="ui-date"></i>
+                                            {{qita_qian.modified_time}}
+                                        </li>
+                                        <li class="entry__meta-comments">
+                                            <i class="ui-comments"></i>
+                                            {{qita_qian.views}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="entry__excerpt">
+                                    <p>{{qita_qian.excerpt}}</p>
+                                </div>
+                            </div>
+                        </article>
+                        <!--列表-->
+                        <ul class="post-list-small post-list-small--border-top">
+                            {% for new in qita_hou %}
+                            <li class="post-list-small__item">
+                                <article class="post-list-small__entry">
+                                    <div class="post-list-small__body">
+                                        <h3 class="post-list-small__entry-title">
+                                            <a href="{% url 'news:news_detail' new.id %}">{{new.title}}</a>
+                                        </h3>
+                                        <ul class="entry__meta">
+                                            <li class="entry__meta-date">
+                                                <i class="ui-date"></i>
+                                                {{new.modified_time}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!--end-->
+
+
+
+
+                </div>
+            </section>
+            <!-- 栏目结束 -->
+
+ 
+
+        </div>
+        <!-- end posts -->
+
+        <!-- 右边 -->
+        <aside class="col-lg-4 sidebar sidebar--right">
+
+            
+
+            <!-- 三格栅 -->
+            <div class="widget widget-tabpost">
+                <div class="tabs widget-tabpost__tabs">
+                    <ul class="tabs__list widget-tabpost__tabs-list">
+                        <li class="tabs__item widget-tabpost__tabs-item tabs__item--active">
+                            <a href="#tab-trending" class="tabs__url tabs__trigger widget-tabpost__tabs-url">热点</a>
+                        </li>
+                        <li class="tabs__item widget-tabpost__tabs-item">
+                            <a href="#tab-latest"
+                               class="tabs__url tabs__trigger widget-tabpost__tabs-url">最新</a>
+                        </li>
+                        <li class="tabs__item widget-tabpost__tabs-item">
+                            <a href="#tab-comments" class="tabs__url tabs__trigger widget-tabpost__tabs-url">评论</a>
+                        </li>
+                    </ul> <!-- end tabs -->
+
+                    <!-- tab content -->
+                    <div class="tabs__content tabs__content-trigger widget-tabpost__tabs-content">
+
+                        <div class="tabs__content-pane tabs__content-pane--active" id="tab-trending">
+                            <ul class="post-list-small">
+                                {% for new in redian %}
+                                <li class="post-list-small__item">
+                                    <article class="post-list-small__entry clearfix">
+                                        <div class="post-list-small__img-holder">
+                                            <div class="thumb-container thumb-75">
+                                                <a href="{% url 'news:news_detail' new.id %}">
+                                                    <img data-src="/media/{{new.img}}"
+                                                         src="/media/{{new.img}}" alt="" class=" lazyload">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="post-list-small__body">
+                                            <h3 class="post-list-small__entry-title">
+                                                <a href="{% url 'news:news_detail' new.id %}">{{new.title}}</a>
+                                            </h3>
+                                            <ul class="entry__meta">
+                                                <li class="entry__meta-date">
+                                                    <i class="ui-date"></i>
+                                                    {{new.modified_time}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </article>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="tabs__content-pane" id="tab-latest">
+                            <ul class="post-list-small">
+                                {% for new in zuixin %}
+                                <li class="post-list-small__item">
+                                    <article class="post-list-small__entry clearfix">
+                                        <div class="post-list-small__img-holder">
+                                            <div class="thumb-container thumb-75">
+                                                <a href="{% url 'news:news_detail' new.id %}">
+                                                    <img data-src="/media/{{new.img}}"
+                                                         src="/media/{{new.img}}" alt="" class=" lazyload">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="post-list-small__body">
+                                            <h3 class="post-list-small__entry-title">
+                                                <a href="{% url 'news:news_detail' new.id %}">{{new.title}}</a>
+                                            </h3>
+                                            <ul class="entry__meta">
+                                                <li class="entry__meta-date">
+                                                    <i class="ui-date"></i>
+                                                    {{new.modified_time}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </article>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="tabs__content-pane" id="tab-comments">
+                            <ul class="post-list-small">
+                                {% for new in pinglun %}
+                                <li class="post-list-small__item">
+                                    <article class="post-list-small__entry clearfix">
+                                        <div class="post-list-small__img-holder">
+                                            <div class="thumb-container thumb-75">
+                                                <a href="{% url 'news:news_detail' new.new.id %}">
+                                                    <img data-src="/media/{{new.new.img}}"
+                                                         src="/media/{{new.new.img}}" alt="" class=" lazyload">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="post-list-small__body">
+                                            <h3 class="post-list-small__entry-title">
+                                                <a href="{% url 'news:news_detail' new.new.id %}">{{new.new.title}}</a>
+                                            </h3>
+                                            <ul class="entry__meta">
+                                                <li class="entry__meta-date">
+                                                    <i class="ui-date"></i>
+                                                    {{new.new.modified_time}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </article>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                    </div> <!-- end tab content -->
+                </div> <!-- end tabs -->
+            </div> <!-- end widget popular/latest posts -->
+
+
+
+            <!-- 好评 -->
+            <div class="widget widget-reviews">
+                <h4 class="widget-title">推荐</h4>
+                <ul class="post-list-small">
+                    {% for new in tuijian%}
+                    <li class="post-list-small__item">
+                        <article class="post-list-small__entry clearfix">
+                            <div class="post-list-small__img-holder">
+                                <div class="thumb-container thumb-75">
+                                    <a href="{% url 'news:news_detail' new.id %}">
+                                        <img data-src="/media/{{new.img}}"
+                                             src="/media/{{new.img}}" alt="" class=" lazyload">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="post-list-small__body">
+                                <h3 class="post-list-small__entry-title">
+                                    <a href="{% url 'news:news_detail' new.id %}">{{new.title}}</a>
+                                </h3>
+                                <ul class="entry__meta">
+                                    <li class="entry__meta-rating">
+                                        <i class="ui-star"></i>
+                                        <i class="ui-star"></i>
+                                        <i class="ui-star"></i>
+                                        <i class="ui-star"></i>
+                                        <i class="ui-star-outline"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+
+            <!-- 加入我们 -->
+            <div class="widget">
+                <h4 class="widget-title">加入我们</h4>
+                <div class="tweets-container">
+                    <div id="tweets">
+                        <p>QQ交流：*****</p>
+                        <p>VX交流：*****</p>
+                        <p>邮箱交流：*****@163.com</p>
+                        <p>投稿邮箱：*****@qq.com</p>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </aside> <!-- end sidebar -->
+
+    </div> <!-- end content -->
+</div>
+<!-- end main container -->
+
+
+
+{% endblock content %}  

@@ -1,0 +1,96 @@
+<!-- extends表明此页面继承自 base.html 文件 -->
+{% extends "base.html" %}
+{% load static %}
+
+<!-- 写入 base.html 中定义的 title -->
+{% block title %}
+文章详情
+{% endblock title %}
+
+<!-- 写入 base.html 中定义的 content -->
+{% block content %}
+
+<!-- 文章详情 -->
+<div class="container">
+    <div class="row">
+        <!-- 标题及作者 -->
+        <h1 class="col-12 mt-4 mb-4">{{ new.title }}</h1>
+        <div class="col-12 alert alert-success">作者：{{ new.user }} &nbsp;&nbsp;&nbsp;&nbsp; 发布时间：{{ new.created_time }}
+            &nbsp;&nbsp;&nbsp;&nbsp; 浏览量：{{ new.views }}
+        </div>
+
+
+        <!-- 文章正文 -->
+        <div  >
+            <p >{{new.content}}</p>
+        </div>
+    </div>
+</div>
+
+
+
+</script>
+<!-- 发表评论 -->
+<hr>
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="col-24">
+        <form
+                action="{% url 'comment:post_comment' new.id %}"
+                method="POST"
+        >
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="content">
+                    <h4>
+                        我也要发表评论：
+                    </h4>
+                </label>
+                <textarea
+                        type="text"
+                        class="form-control"
+                        id="content"
+                        name="content"
+                        rows="2"></textarea> </label>
+            </div>
+            <!-- 提交按钮 -->
+            <button type="submit" class="btn btn-primary ">发送</button>
+        </form>
+    </div>
+    <br>
+    {% else %}
+    <br>
+    <h5 class="row justify-content-center">
+        请<a href="{% url 'userprofile:login' %}">登录</a>后回复
+    </h5>
+    <br>
+    {% endif %}
+
+
+    <!-- 显示评论 -->
+    <div class="container">
+        <div class="row">
+            <h4>共有{{ comments.count }}条评论</h4>
+        </div>
+
+
+        {% for comment in comments %}
+        <hr>
+        <p>
+            <strong style="color: pink">
+                {{ comment.user }}
+            </strong> 于
+            <span style="color: green">
+                    {{ comment.created|date:"Y-m-d H:i:s" }}
+                </span> 发表评论：
+        <p style="font-family: inherit; font-size: 1em;">
+            {{ comment.content }}</p>
+        </p>
+
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}
