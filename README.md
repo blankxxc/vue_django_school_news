@@ -1,6 +1,6 @@
 ## vue_django_school_news
 用django和vue框架实现的校园新闻网站，欢迎star和fork！
-#如何实现
+# 如何实现
 先clone代码
 在用power shell进入到存放manage.py文件夹 
 输入python manage.py runserver，启动命令
