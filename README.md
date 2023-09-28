@@ -1,0 +1,2 @@
+# vue_django_school_news
+用django和vue框架实现的校园新闻网站，欢迎star和fork！
