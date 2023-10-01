@@ -66,6 +66,7 @@
 文件夹名	文件名	功能
 news	setting	设计总体的情况，例如连接的数据库是什么
 	urls	路由跳转到各个文件夹下的url
+ 
 templates	base.html	Html的头文件，写标题以及导入各类js，css样式
 	header.html	网页页头的导航栏
 	footer.html	网页页尾的书写
@@ -74,21 +75,27 @@ templates	base.html	Html的头文件，写标题以及导入各类js，css样式
 	show.html	列表展示各类新闻
 	login.html	登录界面
 	register.html	用户注册界面
+ 
 static	img	放置图片
 	js	存放js类文件
 	css	存放css类文件
 	fonts	存放各类ui的小图标
+ 
 media	日期类文件夹	放各类上传的图片，用于新闻封面展示
+
 new(用于新闻的各类展示)	admin	用于后台管理系统的设计
 	url	路由用于跳转到views的对应函数
 	view	用于数据库数据的提取、处理与存放
 	models	各类表的创建
+ 
 comment(用于文章下的评论)	url	用于跳转到相应的views对应函数
 	from	用于评论的数据传输
 	model	表的建立
+ 
 uerprofile	url	用于跳转到相应的views对应函数
 	from	用于表格数据的过滤、筛选、传输，例如进行密码一致性检验等等
 	views	表格数据的处理以及前后端数据传输，以及session数据传输。
+ 
 
 
 
